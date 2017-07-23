@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  term_from: 2017-07-23 20:34:07
+  term_to: 2017-07-23 20:34:07
+  target: 1
+  achievement: 1
+  body: MyText
+
+two:
+  term_from: 2017-07-23 20:34:07
+  term_to: 2017-07-23 20:34:07
+  target: 1
+  achievement: 1
+  body: MyText
