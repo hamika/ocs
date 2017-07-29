@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170723114037) do
+ActiveRecord::Schema.define(version: 20170726134738) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,10 @@ ActiveRecord::Schema.define(version: 20170723114037) do
     t.text "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.bigint "schedule_id"
+    t.index ["schedule_id"], name: "index_action_plans_on_schedule_id"
+    t.index ["user_id"], name: "index_action_plans_on_user_id"
   end
 
   create_table "schedules", force: :cascade do |t|
@@ -34,6 +38,8 @@ ActiveRecord::Schema.define(version: 20170723114037) do
     t.string "destination"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "action_plan_id"
+    t.index ["action_plan_id"], name: "index_schedules_on_action_plan_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -49,8 +55,14 @@ ActiveRecord::Schema.define(version: 20170723114037) do
     t.inet "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "action_plan_id"
+    t.index ["action_plan_id"], name: "index_users_on_action_plan_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "action_plans", "schedules"
+  add_foreign_key "action_plans", "users"
+  add_foreign_key "schedules", "action_plans"
+  add_foreign_key "users", "action_plans"
 end
