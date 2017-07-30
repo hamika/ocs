@@ -18,7 +18,6 @@ class ActionPlansController < ApplicationController
   def new
     puts "ニ ュ ー 〜 ー テ ス ト テ ス ト ホ ゲ ホ ゲ 〜"
     @user = current_user.id
-    puts "#{@user} hogehgoe!!!!!"
     @action_plan = ActionPlan.new
   end
 
@@ -34,10 +33,6 @@ class ActionPlansController < ApplicationController
     @action_plan = ActionPlan.new(action_plan_params)
 
     respond_to do |format|
-      # ap = ActionPlan.find(params[:user_id])
-      # ap = current_user
-      # puts "#{@user}"
-      # ap.save
       @action_plan.user_id = current_user.id
       if @action_plan.save
         format.html { redirect_to @action_plan, notice: 'Action plan was successfully created.' }
