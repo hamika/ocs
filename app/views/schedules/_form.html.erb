@@ -47,8 +47,8 @@
   </div>
 
   <div class="field">
-    <%= fields_for @action_plan, update_action_plan_params do |field| %>
-      <%= field.collection_select :schedule_id %>
+    <%= form.fields_for @action_plan do |field| %>
+      <%= field.collection_select :body %>
     <% end %>
   </div>
 
