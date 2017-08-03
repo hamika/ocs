@@ -42,14 +42,10 @@
   </div>
 
   <div class="field">
-    <%= form.label :destination %>
-    <%= form.text_field :destination, id: :schedule_destination %>
-  </div>
-
-  <div class="field">
-    <%= form.fields_for @action_plan do |field| %>
-      <%= field.collection_select :body %>
-    <% end %>
+    <!-- <%= options_from_collection_for_select(ActionPlan.all, :id, :body) %> -->
+    <%= collection_select(:body, :id, ActionPlan.all, :id, :body) %>
+    <!-- <% action_plan = ActionPlan.all.map { |ap| [ap.body, ap.id] } %>
+    <%= options_for_select(action_plan) %> -->
   </div>
 
   <div class="actions">

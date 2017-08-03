@@ -29,11 +29,10 @@ class SchedulesController < ApplicationController
   def create
     puts "ク リ エ イ ト テ ス ト テ ス ト ホ ゲ ホ ゲ 〜"
     @schedule = Schedule.new(schedule_params)
-    @action_plan = ActionPlan.all
+
     respond_to do |format|
-      # action_plan = ActionPlan.find(1)
-      @action_plan.update(action_plan_params)
-      # @schedule.action_plan_id = action_plan.id
+      action_plan = ActionPlan.find(params[:id])
+      @schedule.action_plan_id = action_plan.id
 
       if @schedule.save
         format.html { redirect_to @schedule, notice: 'Schedule was successfully created.' }
