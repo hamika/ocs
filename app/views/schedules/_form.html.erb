@@ -21,15 +21,17 @@
     <%= form.datetime_select :term_to, id: :schedule_term_to %>
   </div>
 
-  <div class="field">
-    <%= form.label :target %>
-    <%= form.number_field :target, id: :schedule_target %>
-  </div>
+  <% if @schedule.persisted? %>
+    <div class="field">
+      <%= form.label :target %>
+      <%= form.number_field :target, id: :schedule_target %>
+    </div>
 
-  <div class="field">
-    <%= form.label :achievement %>
-    <%= form.number_field :achievement, id: :schedule_achievement %>
-  </div>
+    <div class="field">
+      <%= form.label :achievement %>
+      <%= form.number_field :achievement, id: :schedule_achievement %>
+    </div>
+  <% end %>
 
   <div class="field">
     <%= form.label :body %>
@@ -42,7 +44,7 @@
   </div>
 
   <div class="field">
-    <%= form.label :hogehoge %>
+    <%= form.label :action_plan %>
     <%= form.collection_select :action_plan_id, ActionPlan.all, :id, :body, prompt: true %>
   </div>
 
