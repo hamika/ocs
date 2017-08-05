@@ -42,10 +42,8 @@
   </div>
 
   <div class="field">
-    <!-- <%= options_from_collection_for_select(ActionPlan.all, :id, :body) %> -->
-    <%= collection_select(:body, :id, ActionPlan.all, :id, :body) %>
-    <!-- <% action_plan = ActionPlan.all.map { |ap| [ap.body, ap.id] } %>
-    <%= options_for_select(action_plan) %> -->
+    <%= form.label :hogehoge %>
+    <%= form.collection_select :action_plan_id, ActionPlan.all, :id, :body, prompt: true %>
   </div>
 
   <div class="actions">

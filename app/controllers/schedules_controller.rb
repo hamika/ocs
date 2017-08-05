@@ -31,9 +31,7 @@ class SchedulesController < ApplicationController
     @schedule = Schedule.new(schedule_params)
 
     respond_to do |format|
-      action_plan = ActionPlan.find(params[:id])
-      @schedule.action_plan_id = action_plan.id
-
+      p @schedule
       if @schedule.save
         format.html { redirect_to @schedule, notice: 'Schedule was successfully created.' }
         format.json { render :show, status: :created, location: @schedule }
@@ -78,6 +76,6 @@ class SchedulesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def schedule_params
-      params.require(:schedule).permit(:term_from, :term_to, :target, :achievement, :body, :destination)
+      params.require(:schedule).permit(:term_from, :term_to, :target, :achievement, :body, :destination, :action_plan_id)
     end
 end
