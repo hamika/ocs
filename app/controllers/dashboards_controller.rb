@@ -6,8 +6,9 @@ class DashboardsController < ApplicationController
   def index
     puts "イ ン デ ッ ク ス テ ス ト テ ス ト ホ ゲ ホ ゲ 〜"
     # ar&rubyをいじるだけ！paramsとかとりあえずつS買わないかな！
-    Schedule.where(action_plan_id: 5).select(:target).each do |schedule|
-      hash = schedule.slice(:target)
+    Schedule.where(action_plan_id: 5).select(:target).map do |schedule|
+      array = []
+      hash = schedule.slice(:target).flatten
       p hash
     end
   end
