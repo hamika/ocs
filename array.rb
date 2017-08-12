@@ -101,13 +101,15 @@ puts "結果9: #{ result }"
 
 
 # 文字列の長さを合計する
-array = [{ value: 4, xxx: "ああ" }, { value: 6, xxx: "本日は" },
+array = [{ value: 4, xxx: "ああ" }, { value: 6, xxx: "本日は1234" },
          { value: 7, xxx: "晴天" }, { value: 9, xxx: "ですか？" }]
 value_result = 0
 xxx_result   = 0
 
-array.each { |i| value_result += i[:value] }
-xxx_result = "array[:xxx]".size
+array.each do |i|
+  value_result += i[:value]
+  xxx_result   += i[:xxx].size
+end
 
 puts "結果10.1: #{ value_result }"
 puts "結果10.2: #{ xxx_result }"
