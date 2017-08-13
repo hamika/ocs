@@ -42,6 +42,7 @@ array.each do |items|
     results << item
   end
 end
+
 puts "結果2: #{ results }"
 
 
@@ -90,7 +91,7 @@ puts "結果3.5: #{ sum_even }"
 puts "結果3.6: #{ array_even }"
 
 
-# 一定の条件の場合だけ合計する (文字列)
+# 一定の条件の場合だけ合計する (文字列) 1
 ## 下記の配列の中の文字列を連結して「いろはにほへとちりぬるを」を完成してputsしてください。途中に入り込んでいる数値を連結しない方法を考えましょう。
 array = [['いろ', 0, 'は', 4, 'にほへ'],
          ['と', 9, 'ちり'],
@@ -106,6 +107,28 @@ end
 puts "結果4: #{ result }"
 
 
+# 一定の条件の場合だけ合計する (文字列) 2
+## 下記の配列の中の文字列を連結して「いろはにほへとちりぬるを」を完成してputsしてください。途中に入り込んでいる数値を連結しない方法を考えましょう。
+array = [['いろ', 0, 'は', 4, 'にほへ'],
+         ['と', 9, 'ちり'],
+         ['ぬ', 'る', 10, 'を']]
+str = ""
+arr = []
+
+array.each do |items|
+  items.each do |item|
+    if item.class.name == "String"
+      str << item
+    else
+      arr << item
+    end
+  end
+end
+
+puts "結果4.2: #{ str }"
+puts "結果4.3: #{ arr }"
+
+
 # ハッシュのキーを使う
 ## 下記のハッシュの中からキーだけ取り出し'佐藤,鈴木,田中'とputsしてください。
 ## 同様に値だけを取り出して'1,2,3'とputsしてください。
@@ -119,17 +142,5 @@ hash.each do |key, value|
   values << value
 end
 
-puts "結果: #{ keys }"
-puts "結果: #{ values }"
-
-
-
-
-
-result = 0
-
-(1..100).each do |math|
-  result += math
-end
-
-puts result
+puts "結果5.1: #{ keys }"
+puts "結果5.2: #{ values }"
