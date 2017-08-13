@@ -18,7 +18,7 @@ puts "結果1.2: #{ total }"
 ## array の中にある、数字の合計を出して puts しましょう (合計 39)
 array = [[1, 5, 6, 8], [3, 3, 1,  1,  2], [4, 5]]
 len = 0
-num = 0
+# num = 0
 sum = 0
 
 array.each do |items|
@@ -35,17 +35,14 @@ puts "結果1.4: #{ sum }"
 # 文字を連結する
 ## 下記の配列の中の文字列を連結して「いろはにほへとちりぬるを」を完成してputsしてください
 array = [['いろ', 'は', 'にほへ'], ['と', 'ちり'], [ 'ぬ',  'る',  'を']]
-results = []
-result  = [] # "" でも 0 でも = results.joinでStringに変換される!
+results = ""
 
 array.each do |items|
   items.each do |item|
     results << item
-    result  =  results.join
   end
 end
-
-puts "結果2: #{ result }"
+puts "結果2: #{ results }"
 
 
 # 一定の条件の場合だけ合計する (数値) 1
@@ -124,3 +121,15 @@ end
 
 puts "結果: #{ keys }"
 puts "結果: #{ values }"
+
+
+
+
+
+result = 0
+
+(1..100).each do |math|
+  result += math
+end
+
+puts result
