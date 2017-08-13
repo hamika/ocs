@@ -17,6 +17,7 @@ num = cars.size
 
 cars.each do |car|
   total += car.weight
+  puts "#{ car.company }\t#{ car.weight }\t#{ car.color }"
 end
 
 average = total / num
