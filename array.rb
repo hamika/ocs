@@ -2,7 +2,7 @@
 array  = [4, 6, 7, 9]
 result = 0
 
-array.each { |i| result += i }
+array.each { |item| result += item }
 
 puts "結果1: #{ result }"
 
@@ -20,7 +20,7 @@ puts "結果2: #{ result }"
 array  = [{ value: 4 }, { value: 6 }, { value: 7 }, { value: 9 }]
 result = 0
 
-result = array.map { |i| i[:value] }.inject(:+)
+result = array.map { |item| item[:value] }.inject(:+)
 
 puts "結果3: #{ result }"
 
@@ -29,7 +29,7 @@ puts "結果3: #{ result }"
 array  = [{ value: 4 }, { value: 6 }, { value: 7 }, { value: 9 }]
 result = 0
 
-array.each { |i| result += i[:value] }
+array.each { |item| result += item[:value] }
 
 puts "結果4: #{ result }"
 
@@ -38,7 +38,7 @@ puts "結果4: #{ result }"
 array  = [{value: 4}, {value: 6}, {value: 7}, {value: 9}]
 result = []
 
-array.each { |i| result << i[:value] }
+array.each { |item| result << item[:value] }
 result = result.inject(:+)
 
 puts "結果5: #{ result }"
@@ -48,8 +48,8 @@ puts "結果5: #{ result }"
 array  = [[4], [6], [7], [9]]
 result = 0
 
-array.each do |i|
-  result += i[0]
+array.each do |item|
+  result += item[0]
 end
 
 puts "結果6: #{ result }"
@@ -61,9 +61,9 @@ array = [{ value: 4, xxx: 1 }, { value: 6, xxx: 3 },
 value_result = 0
 xxx_result   = 0
 
-array.each do |i|
-  value_result += i[:value]
-  xxx_result   += i[:xxx]
+array.each do |item|
+  value_result += item[:value]
+  xxx_result   += item[:xxx]
 end
 
 puts "結果7: #{ value_result }, #{ xxx_result }"
@@ -73,8 +73,8 @@ puts "結果7: #{ value_result }, #{ xxx_result }"
 array  = [{ value: 1 }, { value: 2 }, { value: 2 }]
 result = 0
 
-array.each do |i|
-  result += i[:value]
+array.each do |item|
+  result += item[:value]
 end
 
 puts "結果8: #{ result} "
@@ -86,12 +86,12 @@ array  = [{ test: 123, value: [{ value: 1 }, { value: 2 }] },
           { test: 566, value: [{ value: 3 }, { value: 4 }] }]
 result = 0
 
-array.each do |i|
-  num = i[:value]
+array.each do |items|
+  num = items[:value]
   sum = 0
 
-  num.each do |j|
-    sum += j[:value]
+  num.each do |item|
+    sum += item[:value]
   end
 
 result += sum
@@ -106,9 +106,9 @@ array = [{ value: 4, xxx: "ああ" }, { value: 6, xxx: "本日は1234" },
 value_result = 0
 xxx_result   = 0
 
-array.each do |i|
-  value_result += i[:value]
-  xxx_result   += i[:xxx].size
+array.each do |item|
+  value_result += item[:value]
+  xxx_result   += item[:xxx].size
 end
 
 puts "結果10.1: #{ value_result }"
