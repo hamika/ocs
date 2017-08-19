@@ -1,1 +1,73 @@
-<p>hello world!</p>
+<h1>Dash Boards</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Term from</th>
+      <th>Term to</th>
+      <th>Target</th>
+      <th>Achievement</th>
+      <th>Body</th>
+    </tr>
+  </thead>
+
+  <tbody>
+      <tr>
+        <td><%= @action_plans.term_from %></td>
+        <td><%= @action_plans.term_to %></td>
+        <td><%= @action_plans.target %></td>
+        <td><%= @action_plans.achievement %></td>
+        <td><%= @action_plans.body %></td>
+      </tr>
+  </tbody>
+
+  <thead>
+    <tr>
+      <th>Term from</th>
+      <th>Term to</th>
+      <th>Target</th>
+      <th>Achievement</th>
+      <th>Body</th>
+      <th>Destination</th>
+    </tr>
+  </thead>
+
+  <tbody>
+      <% @schedules.each do |schedule| %>
+        <tr>
+          <td><%= schedule.term_from %></td>
+          <td><%= schedule.term_to %></td>
+          <td><%= schedule.target %></td>
+          <td><%= schedule.achievement %></td>
+          <td><%= schedule.body %></td>
+          <td><%= schedule.destination %></td>
+        </tr>
+      <% end %>
+  </tbody>
+
+  <thead>
+    <tr>
+      <th>実績件数</th>
+      <th>目標件数</th>
+      <th>差引件数</th>
+      <th>件数達成率</th>
+      <th>実績金額</th>
+      <th>目標金額</th>
+      <th>残り金額</th>
+      <th>金額達成率</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td><%= @target_subtotal %></td>
+      <td><%= @action_plans[:target] %></td>
+      <td><%= @sum_up[:target_score] %></td>
+      <td><%= @sum_up[:target_percentage] %></td>
+      <td><%= @achiev_subtotal %></td>
+      <td><%= @action_plans[:achievement] %></td>
+      <td><%= @sum_up[:achievement_score] %></td>
+      <td><%= @sum_up[:achievement_percentage] %></td>
+    </tr>
+  </tbody>
+</table>
