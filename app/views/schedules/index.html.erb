@@ -27,6 +27,7 @@
         <td><%= link_to 'Show', schedule %></td>
         <td><%= link_to 'Edit', edit_schedule_path(schedule) %></td>
         <td><%= link_to 'Destroy', schedule, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Dashboards', dashboards_path(action_plan: schedule.action_plan_id) %></td>
       </tr>
     <% end %>
   </tbody>

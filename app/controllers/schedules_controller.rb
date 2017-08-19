@@ -4,7 +4,6 @@ class SchedulesController < ApplicationController
   # GET /schedules
   # GET /schedules.json
   def index
-    puts "イ ン デ ッ ク ス テ ス ト テ ス ト ホ ゲ ホ ゲ 〜"
     @schedules = Schedule.all
   end
 
@@ -15,19 +14,16 @@ class SchedulesController < ApplicationController
 
   # GET /schedules/new
   def new
-    puts "ニ ュ ー 〜 ー テ ス ト テ ス ト ホ ゲ ホ ゲ 〜"
     @schedule = Schedule.new
   end
 
   # GET /schedules/1/edit
   def edit
-    puts "エ デ ィ ッ っ ト テ ス ト テ ス ト ホ ゲ ホ ゲ 〜"
   end
 
   # POST /schedules
   # POST /schedules.json
   def create
-    puts "ク リ エ イ ト テ ス ト テ ス ト ホ ゲ ホ ゲ 〜"
     @schedule = Schedule.new(schedule_params)
 
     respond_to do |format|
@@ -45,7 +41,6 @@ class SchedulesController < ApplicationController
   # PATCH/PUT /schedules/1
   # PATCH/PUT /schedules/1.json
   def update
-    puts "ア ッ プ デ イ ー ト テ ス ト テ ス ト ホ ゲ ホ ゲ 〜"
     respond_to do |format|
       if @schedule.update(schedule_params)
         format.html { redirect_to @schedule, notice: 'Schedule was successfully updated.' }
@@ -60,7 +55,6 @@ class SchedulesController < ApplicationController
   # DELETE /schedules/1
   # DELETE /schedules/1.json
   def destroy
-    puts "デ ス ト ロ イ テ ス ト テ ス ト ホ ゲ ホ ゲ 〜"
     @schedule.destroy
     respond_to do |format|
       format.html { redirect_to schedules_url, notice: 'Schedule was successfully destroyed.' }
