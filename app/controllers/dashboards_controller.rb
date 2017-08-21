@@ -5,28 +5,22 @@ class DashboardsController < ApplicationController
   # GET /dashboards.json
   def index
     num = params[:action_plan]
-    array = []
-    @schedules = Schedule.where(action_plan_id: num)
-    @schedules.each do |schedule|
-      array << [schedule[:target], schedule[:achievement]]
-    end
-
+    # array = []
     @target_subtotal = 0
     @achiev_subtotal = 0
-    array.each do |ary|
-      @target_subtotal += ary[0]
-      @achiev_subtotal += ary[1]
+    @schedules = Schedule.where(action_plan_id: num)
+    @schedules.each do |schedule|
+      @target_subtotal += schedule[:target]
+      @achiev_subtotal += schedule[:achievement]
     end
 
     @sum_up = {}
-    @action_plans = ActionPlan.find(num)
-    @sum_up[:target_score] = @target_subtotal - @action_plans[:target]
-    tp = @target_subtotal / @action_plans[:target].to_f * 100
-    @sum_up[:target_percentage] = tp.to_s(:percentage, precision: 2,
-                                          delimiter: '.', separator: ',')
-    @sum_up[:achievement_score] = @achiev_subtotal - @action_plans[:achievement]
-    ap = @achiev_subtotal / @action_plans[:achievement].to_f * 100
-    @sum_up[:achievement_percentage] = ap.to_s(:percentage, precision: 2,
-                                               delimiter: '.', separator: ',')
+    @action_plan = ActionPlan.find(num)
+    @sum_up[:target_score] = @target_subtotal - @action_plan[:target]
+    @sum_up[:target_percentage] = @target_subtotal /
+                                  @action_plan[:target].to_f * 100
+    @sum_up[:achievement_score] = @achiev_subtotal - @action_plan[:achievement]
+    @sum_up[:achievement_percentage] = @achiev_subtotal /
+                                       @action_plan[:achievement].to_f * 100
   end
 end

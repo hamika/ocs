@@ -13,11 +13,11 @@
 
   <tbody>
       <tr>
-        <td><%= @action_plans.term_from %></td>
-        <td><%= @action_plans.term_to %></td>
-        <td><%= @action_plans.target %></td>
-        <td><%= @action_plans.achievement %></td>
-        <td><%= @action_plans.body %></td>
+        <td><%= @action_plan.term_from %></td>
+        <td><%= @action_plan.term_to %></td>
+        <td><%= @action_plan.target %></td>
+        <td><%= @action_plan.achievement %></td>
+        <td><%= @action_plan.body %></td>
       </tr>
   </tbody>
 
@@ -61,13 +61,13 @@
   <tbody>
     <tr>
       <td><%= @target_subtotal %></td>
-      <td><%= @action_plans[:target] %></td>
+      <td><%= @action_plan[:target] %></td>
       <td><%= @sum_up[:target_score] %></td>
-      <td><%= @sum_up[:target_percentage] %></td>
+      <td><%= percentize @sum_up[:target_percentage] %></td>
       <td><%= @achiev_subtotal %></td>
-      <td><%= @action_plans[:achievement] %></td>
+      <td><%= @action_plan[:achievement] %></td>
       <td><%= @sum_up[:achievement_score] %></td>
-      <td><%= @sum_up[:achievement_percentage] %></td>
+      <td><%= percentize @sum_up[:achievement_percentage] %></td>
     </tr>
   </tbody>
 </table>
