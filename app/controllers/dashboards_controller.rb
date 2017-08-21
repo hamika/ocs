@@ -4,18 +4,17 @@ class DashboardsController < ApplicationController
   # GET /dashboards
   # GET /dashboards.json
   def index
-    num = params[:action_plan]
-    # array = []
+    action_plan_id = params[:action_plan]
     @target_subtotal = 0
     @achiev_subtotal = 0
-    @schedules = Schedule.where(action_plan_id: num)
+    @schedules = Schedule.where(action_plan_id: action_plan_id)
     @schedules.each do |schedule|
       @target_subtotal += schedule[:target]
       @achiev_subtotal += schedule[:achievement]
     end
 
     @sum_up = {}
-    @action_plan = ActionPlan.find(num)
+    @action_plan = ActionPlan.find(action_plan_id)
     @sum_up[:target_score] = @target_subtotal - @action_plan[:target]
     @sum_up[:target_percentage] = @target_subtotal /
                                   @action_plan[:target].to_f * 100
