@@ -4,7 +4,11 @@ class SchedulesController < ApplicationController
   # GET /schedules
   # GET /schedules.json
   def index
-    @schedules = Schedule.all
+    if params[:achievement] == nil
+      @schedules = Schedule.all
+    else params[:achievement] != nil
+      @schedules = Schedule.where(achievement: params[:achievement])
+    end
   end
 
   # GET /schedules/1
