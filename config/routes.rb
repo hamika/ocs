@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :customers
   resources :schedules
   resources :action_plans
   devise_for :users
