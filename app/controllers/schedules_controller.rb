@@ -4,10 +4,12 @@ class SchedulesController < ApplicationController
   # GET /schedules
   # GET /schedules.json
   def index
-    if params[:achievement] == nil
+    if params[:term_from] == nil && params[:achievement] == nil
       @schedules = Schedule.all
-    else params[:achievement] != nil
+    elsif params[:achievement] != nil
       @schedules = Schedule.where(achievement: params[:achievement])
+    else params[:term_from] != nil
+      @schedules = Schedule.where(term_from: params[:year])
     end
   end
 
@@ -74,6 +76,8 @@ class SchedulesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def schedule_params
-      params.require(:schedule).permit(:term_from, :term_to, :target, :achievement, :body, :destination, :action_plan_id)
+      params.require(:schedule).permit(:term_from, :term_to, :target,
+                                       :achievement, :body, :destination,
+                                       :action_plan_id, :term_from_year)
     end
 end

@@ -4,7 +4,7 @@
 
 <%= form_tag '/schedules', method: 'get' do %>
   <div class="field">
-    <%= datetime_select :term_from, params[:term_from] %>
+    <%= select_year DateTime.now, prefix: :term_from %>
     <%= submit_tag %>
   </div>
 <% end %>
