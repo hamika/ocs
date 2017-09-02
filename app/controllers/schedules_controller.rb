@@ -9,8 +9,9 @@ class SchedulesController < ApplicationController
     elsif params[:achievement] != nil
       @schedules = Schedule.where(achievement: params[:achievement])
     else params[:term_from] != nil
-      @schedules = Schedule.where(term_from: params[:year])
+      @schedules = Schedule.where(term_from: params[:term_from][:year])
     end
+    puts "@@@@@ #{ @schedules } @@@@@"
   end
 
   # GET /schedules/1
@@ -78,6 +79,6 @@ class SchedulesController < ApplicationController
     def schedule_params
       params.require(:schedule).permit(:term_from, :term_to, :target,
                                        :achievement, :body, :destination,
-                                       :action_plan_id, :term_from_year)
+                                       :action_plan_id, :year)
     end
 end

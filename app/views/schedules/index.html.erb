@@ -5,6 +5,7 @@
 <%= form_tag '/schedules', method: 'get' do %>
   <div class="field">
     <%= select_year DateTime.now, prefix: :term_from %>
+    <!-- <%= select_year Time.now, prefix: :term_to %> -->
     <%= submit_tag %>
   </div>
 <% end %>
@@ -25,7 +26,8 @@
       <th>Achievement</th>
       <th>Body</th>
       <th>Destination</th>
-      <th colspan="3"></th>
+      <th>Action Plan</th>
+      <th colspan="4"></th>
     </tr>
   </thead>
 
@@ -38,6 +40,7 @@
         <td><%= schedule.achievement %></td>
         <td><%= schedule.body %></td>
         <td><%= schedule.destination %></td>
+        <td><%= schedule.action_plan.body %></td>
         <td><%= link_to 'Show', schedule %></td>
         <td><%= link_to 'Edit', edit_schedule_path(schedule) %></td>
         <td><%= link_to 'Destroy', schedule, method: :delete, data: { confirm: 'Are you sure?' } %></td>
