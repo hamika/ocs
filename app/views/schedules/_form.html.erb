@@ -43,10 +43,39 @@
     <%= form.text_field :destination, id: :schedule_destination %>
   </div>
 
-  <div class="field">
-    <%= form.label :action_plan %>
-    <%= form.collection_select :action_plan_id, ActionPlan.all, :id, :body, prompt: true %>
-  </div>
+  <% if !@schedule.persisted? %>
+    <div class="field">
+      <%= form.label :action_plan %>
+      <%= form.collection_select :action_plan_id, ActionPlan.all, :id, :body, prompt: true %>
+    </div>
+  <% end %>
+
+  <% if @schedule.persisted? %>
+    <div class="field">
+      <%= form.label :interview %>
+      <%= form.check_box :activity_interview,
+      id: :schedule_activity_interview %>
+    </div>
+
+    <div class="field">
+      <%= form.label :inspection %>
+      <%= form.check_box :activity_inspection,
+      id: :schedule_activity_inspection %>
+    </div>
+
+    <div class="field">
+      <%= form.label :presentation %>
+      <%= form.check_box :activity_presentation,
+      id: :schedule_activity_presentation %>
+    </div>
+
+    <div class="field">
+      <%= form.label :engagement %>
+      <%= form.check_box :activity_engagement,
+      id: :schedule_activity_engagement %>
+    </div>
+  <% end %>
+
 
   <div class="actions">
     <%= form.submit %>

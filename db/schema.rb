@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170830152308) do
+ActiveRecord::Schema.define(version: 20170903192830) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,8 +39,6 @@ ActiveRecord::Schema.define(version: 20170830152308) do
     t.integer "gender"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "schedule_id"
-    t.index ["schedule_id"], name: "index_customers_on_schedule_id"
   end
 
   create_table "schedules", force: :cascade do |t|
@@ -53,6 +51,11 @@ ActiveRecord::Schema.define(version: 20170830152308) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "action_plan_id"
+    t.boolean "activity_setup"
+    t.boolean "activity_interview"
+    t.boolean "activity_inspection"
+    t.boolean "activity_presentation"
+    t.boolean "activity_engagement"
     t.index ["action_plan_id"], name: "index_schedules_on_action_plan_id"
   end
 
@@ -77,7 +80,6 @@ ActiveRecord::Schema.define(version: 20170830152308) do
 
   add_foreign_key "action_plans", "schedules"
   add_foreign_key "action_plans", "users"
-  add_foreign_key "customers", "schedules"
   add_foreign_key "schedules", "action_plans"
   add_foreign_key "users", "action_plans"
 end
