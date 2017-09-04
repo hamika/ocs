@@ -12,20 +12,24 @@ class SchedulesController < ApplicationController
       @schedules = Schedule.where(term_from: params[:term_from][:year])
     end
     puts "@@@@@ #{ @schedules } @@@@@"
+    puts "IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII"
   end
 
   # GET /schedules/1
   # GET /schedules/1.json
   def show
+    puts "SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS"
   end
 
   # GET /schedules/new
   def new
     @schedule = Schedule.new
+    puts "NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN"
   end
 
   # GET /schedules/1/edit
   def edit
+    puts "EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE"
   end
 
   # POST /schedules
@@ -34,7 +38,6 @@ class SchedulesController < ApplicationController
     @schedule = Schedule.new(schedule_params)
 
     respond_to do |format|
-      p @schedule
       if @schedule.save
         format.html { redirect_to @schedule, notice: 'Schedule was successfully created.' }
         format.json { render :show, status: :created, location: @schedule }
@@ -43,11 +46,38 @@ class SchedulesController < ApplicationController
         format.json { render json: @schedule.errors, status: :unprocessable_entity }
       end
     end
+    puts "CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC"
   end
 
   # PATCH/PUT /schedules/1
   # PATCH/PUT /schedules/1.json
   def update
+    if params[:activity_setup]   = 1
+      @schedule[:activity_setup] = true
+    else params[:activity_setup] = 0
+      @schedule[:activity_setup] = false
+    end
+    if params[:activity_interview]   = 1
+      @schedule[:activity_interview] = true
+    else params[:activity_interview] = 0
+      @schedule[:activity_interview] = false
+    end
+    if params[:activity_inspection]   = 1
+      @schedule[:activity_inspection] = true
+    else params[:activity_inspection] = 0
+      @schedule[:activity_inspection] = false
+    end
+    if params[:activity_presentation]   = 1
+      @schedule[:activity_presentation] = true
+    else params[:activity_presentation] = 0
+      @schedule[:activity_presentation] = false
+    end
+    if params[:activity_engagement]   = 1
+      @schedule[:activity_engagement] = true
+    else params[:activity_engagement] = 0
+      @schedule[:activity_engagement] = false
+    end
+
     respond_to do |format|
       if @schedule.update(schedule_params)
         format.html { redirect_to @schedule, notice: 'Schedule was successfully updated.' }
@@ -57,6 +87,12 @@ class SchedulesController < ApplicationController
         format.json { render json: @schedule.errors, status: :unprocessable_entity }
       end
     end
+    puts "UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU"
+    puts "#{ @schedule[:activity_setup] }"
+    puts "#{ @schedule[:activity_interview] }"
+    puts "#{ @schedule[:activity_inspection] }"
+    puts "#{ @schedule[:activity_presentation] }"
+    puts "#{ @schedule[:activity_engagement] }"
   end
 
   # DELETE /schedules/1
@@ -77,8 +113,10 @@ class SchedulesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def schedule_params
-      params.require(:schedule).permit(:term_from, :term_to, :target,
-                                       :achievement, :body, :destination,
-                                       :action_plan_id, :year)
+      params.require(:schedule).permit(:term_from, :term_to,
+      :target, :achievement, :body, :destination, :action_plan_id,
+      :year, :activity_setup, :activity_interview,
+      :activity_inspection, :activity_presentation,
+      :activity_engagement)
     end
 end
