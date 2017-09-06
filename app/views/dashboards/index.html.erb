@@ -61,11 +61,11 @@
   <tbody>
     <tr>
       <td><%= @target_subtotal %></td>
-      <td><%= @action_plan[:target] %></td>
+      <td><%= @action_plan.target %></td>
       <td><%= @sum_up[:target_score] %></td>
       <td><%= percentize @sum_up[:target_percentage] %></td>
       <td><%= @achiev_subtotal %></td>
-      <td><%= @action_plan[:achievement] %></td>
+      <td><%= @action_plan.achievement %></td>
       <td><%= @sum_up[:achievement_score] %></td>
       <td><%= percentize @sum_up[:achievement_percentage] %></td>
     </tr>
