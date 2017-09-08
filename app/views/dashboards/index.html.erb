@@ -47,27 +47,35 @@
 
   <thead>
     <tr>
-      <th>実績件数</th>
       <th>目標件数</th>
+      <th>実績件数</th>
       <th>差引件数</th>
       <th>件数達成率</th>
-      <th>実績金額</th>
       <th>目標金額</th>
+      <th>実績金額</th>
       <th>残り金額</th>
       <th>金額達成率</th>
+      <th>目標ポイント</th>
+      <th>実働ポイント</th>
+      <th>残りポイント</th>
+      <th>活動進捗率</th>
     </tr>
   </thead>
 
   <tbody>
     <tr>
-      <td><%= @target_subtotal %></td>
       <td><%= @action_plan.target %></td>
+      <td><%= @target_subtotal %></td>
       <td><%= @sum_up[:target_score] %></td>
       <td><%= percentize @sum_up[:target_percentage] %></td>
-      <td><%= @achiev_subtotal %></td>
       <td><%= @action_plan.achievement %></td>
+      <td><%= @achiev_subtotal %></td>
       <td><%= @sum_up[:achievement_score] %></td>
       <td><%= percentize @sum_up[:achievement_percentage] %></td>
+      <td><%= @action_plan.target * 10 %></td>
+      <td><%= @activity_subtotal %></td>
+      <td><%= @action_plan.target * 10 - @activity_subtotal %></td>
+      <td><%= percentize @sum_up[:action_plan_target] %></td>
     </tr>
   </tbody>
 </table>
