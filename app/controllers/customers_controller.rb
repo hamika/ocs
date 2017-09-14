@@ -5,6 +5,9 @@ class CustomersController < ApplicationController
   # GET /customers.json
   def index
     @customers = Customer.all
+    if params[:first_name].present?
+      @customers = Customer.search_first_name params[:first_name]
+    end
   end
 
   # GET /customers/1
