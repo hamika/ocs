@@ -5,6 +5,10 @@ class CustomersController < ApplicationController
   # GET /customers.json
   def index
     @customers = Customer.all
+    if params[:first_name].present? && params[:last_name].present?
+      @customers = Customer.search_full_name params[:first_name],
+      params[:last_name]
+    end
   end
 
   # GET /customers/1
@@ -25,7 +29,6 @@ class CustomersController < ApplicationController
   # POST /customers.json
   def create
     @customer = Customer.new(customer_params)
-
     respond_to do |format|
       if @customer.save
         format.html { redirect_to @customer, notice: 'Customer was successfully created.' }
