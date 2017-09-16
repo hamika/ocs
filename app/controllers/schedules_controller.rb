@@ -4,12 +4,9 @@ class SchedulesController < ApplicationController
   # GET /schedules
   # GET /schedules.json
   def index
-    if params[:term_from] == nil && params[:achievement] == nil
-      @schedules = Schedule.all
-    elsif params[:achievement] != nil
-      @schedules = Schedule.where(achievement: params[:achievement])
-    else params[:term_from] != nil
-      @schedules = Schedule.where(term_from: params[:term_from][:year])
+    @schedules = Schedule.all
+    if params[:term_from].present?
+      Schedule.where("date[year] >= params[:date][:year]")
     end
   end
 
@@ -22,7 +19,6 @@ class SchedulesController < ApplicationController
   def new
     @schedule = Schedule.new
   end
-
   # GET /schedules/1/edit
   def edit
   end
@@ -32,12 +28,17 @@ class SchedulesController < ApplicationController
   def create
     @schedule = Schedule.new(schedule_params)
     respond_to do |format|
+      @schedule.target = 0 if @schedule.target == nil
+      @schedule.achievement = 0 if @schedule.achievement == nil
       if @schedule.save
-        format.html { redirect_to @schedule, notice: 'Schedule was successfully created.' }
-        format.json { render :show, status: :created, location: @schedule }
+        format.html { redirect_to @schedule,
+          notice: 'Schedule was successfully created.' }
+        format.json { render :show, status: :created,
+          location: @schedule }
       else
         format.html { render :new }
-        format.json { render json: @schedule.errors, status: :unprocessable_entity }
+        format.json { render json: @schedule.errors,
+          status: :unprocessable_entity }
       end
     end
   end
@@ -77,6 +78,7 @@ class SchedulesController < ApplicationController
       params.require(:schedule).permit(:term_from, :term_to, :target,
         :achievement, :body, :destination, :action_plan_id,
         :activity_setup, :activity_interview, :activity_inspection,
-        :activity_presentation, :activity_engagement)
+        :activity_presentation, :activity_engagement,
+        { customer_ids: [] })
     end
 end
