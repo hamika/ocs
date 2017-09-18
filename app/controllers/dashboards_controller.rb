@@ -23,13 +23,24 @@ class DashboardsController < ApplicationController
     @action_plan = ActionPlan.find(action_plan_id)
     @sum_up[:target_score] =
       @target_subtotal - @action_plan.target
-    @sum_up[:target_percentage] =
-      @target_subtotal / @action_plan.target.to_f
+    if @action_plan.target == 0
+      @sum_up[:target_percentage] = @target_subtotal
+    else
+      @sum_up[:target_percentage] =
+        @target_subtotal / @action_plan.target.to_f
+    end
     @sum_up[:achievement_score] =
       @achiev_subtotal - @action_plan.achievement
     @sum_up[:achievement_percentage] =
       @achiev_subtotal / @action_plan.achievement.to_f
-    @sum_up[:action_plan_target] =
-      @activity_subtotal / (@action_plan.target * 10).to_f
+    if @action_plan.target == 0
+      @sum_up[:action_plan_target] = @activity_subtotal
+    else
+      @sum_up[:action_plan_target] =
+        @activity_subtotal / (@action_plan.target * 10).to_f
+    end
+    @sum_up[:activity_set_point] = @action_plan.target * 10
+    @sum_up[:activity_result] =
+      @sum_up[:activity_set_point] - @activity_subtotal
   end
 end

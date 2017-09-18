@@ -5,9 +5,8 @@ class SchedulesController < ApplicationController
   # GET /schedules.json
   def index
     @schedules = Schedule.all
-    if params[:term_from].present?
-      Schedule.where("date[year] >= params[:date][:year]")
-    end
+    # @schedules = Schedule.from_between. params[:term_from],
+    # params[:term_to]
   end
 
   # GET /schedules/1

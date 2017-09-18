@@ -1,18 +1,26 @@
-<p id="notice"><%= notice %></p>
-
 <h1>Schedules</h1>
 
 <%= form_tag(schedules_path, method: "get") do %>
   <div class="field">
-    <%= select_year DateTime.now %>
-    <%= submit_tag %>
+    <%= datetime_select :term_from, id: :schedule %>
+  </div>
+
+  <div class="field">
+    <%= datetime_select :term_to, :id %>
+  </div>
+
+  <div class="actions">
+    <%= submit_tag 'Search!' %>
   </div>
 <% end %>
 
-<%= form_tag '/schedules', method: 'get' do %>
+<%= form_tag(schedules_path, method: "get") do %>
   <div class="field">
     <%= text_field_tag :achievement, params[:achievement] %>
-    <%= submit_tag %>
+  </div>
+
+  <div class="actions">
+    <%= submit_tag 'Search!' %>
   </div>
 <% end %>
 
