@@ -12,13 +12,13 @@
   </thead>
 
   <tbody>
-      <tr>
-        <td><%= @action_plan.term_from %></td>
-        <td><%= @action_plan.term_to %></td>
-        <td><%= @action_plan.target %></td>
-        <td><%= @action_plan.achievement %></td>
-        <td><%= @action_plan.body %></td>
-      </tr>
+    <tr>
+      <td><%= @action_plan.term_from %></td>
+      <td><%= @action_plan.term_to %></td>
+      <td><%= @action_plan.target %></td>
+      <td><%= @action_plan.achievement %></td>
+      <td><%= @action_plan.body %></td>
+    </tr>
   </tbody>
 
   <thead>
@@ -33,16 +33,16 @@
   </thead>
 
   <tbody>
-      <% @schedules.each do |schedule| %>
-        <tr>
-          <td><%= schedule.term_from %></td>
-          <td><%= schedule.term_to %></td>
-          <td><%= schedule.target %></td>
-          <td><%= schedule.achievement %></td>
-          <td><%= schedule.body %></td>
-          <td><%= schedule.destination %></td>
-        </tr>
-      <% end %>
+    <% @schedules.each do |schedule| %>
+      <tr>
+        <td><%= schedule.term_from %></td>
+        <td><%= schedule.term_to %></td>
+        <td><%= schedule.target %></td>
+        <td><%= schedule.achievement %></td>
+        <td><%= schedule.body %></td>
+        <td><%= schedule.destination %></td>
+      </tr>
+    <% end %>
   </tbody>
 
   <thead>
@@ -64,17 +64,17 @@
 
   <tbody>
     <tr>
-      <td><%= @action_plan.target %></td>
-      <td><%= @target_subtotal %></td>
-      <td><%= @sum_up[:target_score] %></td>
+      <td><%=  @action_plan.target %>件</td>
+      <td><%=  @target_subtotal %>件</td>
+      <td><%= remaining @sum_up[:target_score] %></td>
       <td><%= percentize @sum_up[:target_percentage] %></td>
-      <td><%= @action_plan.achievement %></td>
-      <td><%= @achiev_subtotal %></td>
-      <td><%= @sum_up[:achievement_score] %></td>
+      <td><%= yen @action_plan.achievement %></td>
+      <td><%= yen @achiev_subtotal %></td>
+      <td><%= yen @sum_up[:achievement_score] %></td>
       <td><%= percentize @sum_up[:achievement_percentage] %></td>
-      <td><%= @action_plan.target * 10 %></td>
-      <td><%= @activity_subtotal %></td>
-      <td><%= @action_plan.target * 10 - @activity_subtotal %></td>
+      <td><%= @sum_up[:activity_set_point] %>pt</td>
+      <td><%= @activity_subtotal %>pt</td>
+      <td><%= @sum_up[:activity_result] %>pt</td>
       <td><%= percentize @sum_up[:action_plan_target] %></td>
     </tr>
   </tbody>

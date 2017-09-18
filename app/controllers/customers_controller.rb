@@ -5,6 +5,10 @@ class CustomersController < ApplicationController
   # GET /customers.json
   def index
     @customers = Customer.all
+    if params[:first_name].present? && params[:last_name].present?
+      @customers = Customer.search_full_name params[:first_name],
+      params[:last_name]
+    end
   end
 
   # GET /customers/1
@@ -25,7 +29,6 @@ class CustomersController < ApplicationController
   # POST /customers.json
   def create
     @customer = Customer.new(customer_params)
-
     respond_to do |format|
       if @customer.save
         format.html { redirect_to @customer, notice: 'Customer was successfully created.' }
@@ -69,6 +72,6 @@ class CustomersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def customer_params
-      params.require(:customer).permit(:first_name, :last_name, :address, :phone, :email, :birthday, :gender)
+      params.require(:customer).permit(:first_name, :last_name, :address, :phone, :email, :birthday, gender: { male: 0, female: 1, })
     end
 end

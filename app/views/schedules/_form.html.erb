@@ -21,7 +21,7 @@
     <%= form.datetime_select :term_to, id: :schedule_term_to %>
   </div>
 
-  <%# only edit %>
+  <%# only # edit #%>
   <% if @schedule.persisted? %>
     <div class="field">
       <%= form.label :target %>
@@ -33,6 +33,7 @@
       <%= form.number_field :achievement, id: :schedule_achievement %>
     </div>
   <% end %>
+  <%# # # # # # # #%>
 
   <div class="field">
     <%= form.label :body %>
@@ -44,47 +45,50 @@
     <%= form.text_field :destination, id: :schedule_destination %>
   </div>
 
-  <%# only new %>
-  <% if !@schedule.persisted? %>
+  <%# only # new #%>
+  <% unless @schedule.persisted? %>
     <div class="field">
       <%= form.label :action_plan %>
       <%= form.collection_select :action_plan_id, ActionPlan.all, :id, :body, prompt: true %>
     </div>
   <% end %>
+  <%# # # # # # # #%>
 
-  <%# only edit %>
+  <%# only # edit #%>
   <% if @schedule.persisted? %>
     <div class="field">
       <%= form.label :setup %>
-      <%= form.check_box :activity_setup,
-      id: :schedule_activity_setup %>
+      <%= form.check_box :activity_setup %>
     </div>
 
     <div class="field">
       <%= form.label :interview %>
-      <%= form.check_box :activity_interview,
-      id: :schedule_activity_interview %>
+      <%= form.check_box :activity_interview %>
     </div>
 
     <div class="field">
       <%= form.label :inspection %>
-      <%= form.check_box :activity_inspection,
-      id: :schedule_activity_inspection %>
+      <%= form.check_box :activity_inspection %>
     </div>
 
     <div class="field">
       <%= form.label :presentation %>
-      <%= form.check_box :activity_presentation,
-      id: :schedule_activity_presentation %>
+      <%= form.check_box :activity_presentation %>
     </div>
 
     <div class="field">
       <%= form.label :engagement %>
-      <%= form.check_box :activity_engagement,
-      id: :schedule_activity_engagement %>
+      <%= form.check_box :activity_engagement %>
     </div>
   <% end %>
+  <%# # # # # # # #%>
 
+  <div class="field">
+    <%= form.label :customers %><br>
+    <%= collection_check_boxes(:schedule, :customer_ids, Customer.all, :id, :first_name) do |customer|  %>
+      <% customer.label { customer.check_box + customer.text } %>
+    <% end %>
+  </div>
 
   <div class="actions">
     <%= form.submit %>
