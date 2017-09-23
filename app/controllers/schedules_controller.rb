@@ -4,9 +4,25 @@ class SchedulesController < ApplicationController
   # GET /schedules
   # GET /schedules.json
   def index
-    @schedules = Schedule.all
-    # @schedules = Schedule.from_between. params[:term_from],
-    # params[:term_to]
+    if params[:from] && params[:to]
+      from_year = params[:from][:year]
+      from_month = params[:from][:month]
+      from_day = params[:from][:day]
+      from_month.size == 1 ? from_month.insert(0, '0') : from_month
+      from_day.size == 1 ? from_day.insert(0, '0') : from_day
+      from_date = [from_year, from_month, from_day].join
+
+      to_year = params[:to][:year]
+      to_month = params[:to][:month]
+      to_day = params[:to][:day]
+      to_month.size == 1 ? to_month.insert(0, '0') : to_month
+      to_day.size == 1 ? to_day.insert(0, '0') : to_day
+      to_date = [to_year, to_month, to_day].join.to_date.tomorrow.to_s
+      
+      @schedules = Schedule.where("term_from >= ? and term_to < ?", from_date, to_date)
+    else
+      @schedules = Schedule.all
+    end
   end
 
   # GET /schedules/1
@@ -18,6 +34,7 @@ class SchedulesController < ApplicationController
   def new
     @schedule = Schedule.new
   end
+
   # GET /schedules/1/edit
   def edit
   end
