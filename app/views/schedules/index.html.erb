@@ -1,12 +1,14 @@
 <h1>Schedules</h1>
 
-<%= form_tag(schedules_path, method: "get") do %>
+<%= form_tag(schedules_path, method: 'get') do %>
   <div class="field">
-    <%= datetime_select :term_from, id: :schedule %>
+    <%= select_date Date.today, prefix: :from, use_month_numbers: true,
+      start_year: Date.today.year, end_year: Date.today.year + 12 %>
   </div>
 
   <div class="field">
-    <%= datetime_select :term_to, :id %>
+    <%= select_date Date.today, prefix: :to, use_month_numbers: true, 
+      start_year: Date.today.year, end_year: Date.today.year + 12 %>
   </div>
 
   <div class="actions">
