@@ -13,27 +13,27 @@
 
   <div class="field">
     <%= form.label :term_from %>
-    <%= form.datetime_select :term_from, id: :action_plan_term_from %>
+    <%= form.text_field :term_from, id: :action_plan_term_from %>
   </div>
 
   <div class="field">
     <%= form.label :term_to %>
-    <%= form.datetime_select :term_to, id: :action_plan_term_to %>
+    <%= form.text_field :term_to, id: :action_plan_term_to %>
   </div>
 
   <div class="field">
     <%= form.label :target %>
-    <%= form.number_field :target, id: :action_plan_target %>
+    <%= form.text_field :target, id: :action_plan_target %>
   </div>
 
   <div class="field">
     <%= form.label :achievement %>
-    <%= form.number_field :achievement, id: :action_plan_achievement %>
+    <%= form.text_field :achievement, id: :action_plan_achievement %>
   </div>
 
   <div class="field">
     <%= form.label :body %>
-    <%= form.text_area :body, id: :action_plan_body %>
+    <%= form.text_field :body, id: :action_plan_body %>
   </div>
 
   <div class="actions">

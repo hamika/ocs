@@ -1,5 +1,5 @@
 class DashboardsController < ApplicationController
-  before_action :authenticate_user!
+  # before_action :authenticate_user!
 
   # GET /dashboards
   # GET /dashboards.json

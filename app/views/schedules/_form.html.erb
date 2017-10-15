@@ -25,19 +25,19 @@
   <% if @schedule.persisted? %>
     <div class="field">
       <%= form.label :target %>
-      <%= form.number_field :target, id: :schedule_target %>
+      <%= form.text_field :target, id: :schedule_target %>
     </div>
 
     <div class="field">
       <%= form.label :achievement %>
-      <%= form.number_field :achievement, id: :schedule_achievement %>
+      <%= form.text_field :achievement, id: :schedule_achievement %>
     </div>
   <% end %>
   <%# # # # # # # #%>
 
   <div class="field">
     <%= form.label :body %>
-    <%= form.text_area :body, id: :schedule_body %>
+    <%= form.text_field :body, id: :schedule_body %>
   </div>
 
   <div class="field">
