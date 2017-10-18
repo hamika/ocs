@@ -1,13 +1,15 @@
 class CustomersController < ApplicationController
   before_action :set_customer, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /customers
   # GET /customers.json
   def index
-    @customers = Customer.all
     if params[:first_name].present? && params[:last_name].present?
       @customers = Customer.search_full_name params[:first_name],
       params[:last_name]
+    else
+      @customers = Customer.all
     end
   end
 
