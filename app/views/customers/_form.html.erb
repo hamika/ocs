@@ -39,17 +39,17 @@
   <div class="field">
     <%= form.label :birthday %>
     <%= form.date_select(
-    :birthday, id: :customer_birthday,
-    use_two_digit_numbers: true,
-    start_year: (Time.now.year - 100), end_year: (Time.now.year)) %>
+      :birthday, id: :customer_birthday,
+      use_two_digit_numbers: true,
+      start_year: (Time.now.year - 100), end_year: (Time.now.year)) %>
   </div>
 
-  <div class="field">
+  <div id="gender">
     <%= form.label :gender %>
     <%= form.select :gender, Customer.genders %>
   </div>
 
-  <div class="actions">
+  <div id="actions">
     <%= form.submit %>
   </div>
 <% end %>

@@ -3,6 +3,7 @@ require 'rails_helper'
 describe CustomersController do
   let(:user) { create(:user) }
   before { login_user user }
+
   describe 'GET#index' do
     it "customers#indexを表示すること" do
       get :index
@@ -89,15 +90,7 @@ describe CustomersController do
     let(:customer_attributes) { attributes_for(:customer) }
     let(:invalid_customer_attributes) { attributes_for(:invalid_customer) }
     before :each do
-      @customer = create(:customer,
-        first_name: '明日奈',
-        last_name: '結城',
-        address: '東京',
-        phone: '08012345678',
-        email: 'asuna@example.com',
-        birthday: 20070930,
-        gender: 'female'
-      )
+      @customer = create(:sample_customer)
     end
 
     context "有効な属性の場合" do
@@ -136,7 +129,7 @@ describe CustomersController do
         }
         @customer.reload
         expect(@customer.first_name).not_to eq('Larry')
-        expect(@customer.last_name).to eq('結城')
+        expect(@customer.last_name).to eq('Testman')
       end
 
       it "#editを再表示すること" do

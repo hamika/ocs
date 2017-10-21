@@ -41,24 +41,6 @@ class ActionPlansController < ApplicationController
     end
   end
 
-  # def create
-  #   @action_plan = CreateActionPlan.new(
-  #     action_plan_params).search
-  #   respond_to do |format|
-  #     @action_plan.user_id = current_user.id
-  #     if @action_plan.save
-  #       format.html { redirect_to @action_plan,
-  #         notice: 'Action plan was successfully created.' }
-  #       format.json { render :show, status: :created,
-  #         location: @action_plan }
-  #     else
-  #       format.html { render :new }
-  #       format.json { render json: @action_plan.errors,
-  #         status: :unprocessable_entity }
-  #     end
-  #   end
-  # end
-
   # PATCH/PUT /action_plans/1
   # PATCH/PUT /action_plans/1.json
   def update

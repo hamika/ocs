@@ -18,5 +18,15 @@ FactoryGirl.define do
       birthday nil
       gender nil
     end
+
+    factory :sample_customer do
+      first_name 'Dammie'
+      last_name 'Testman'
+      address 'Somewhere'
+      phone '01010101010'
+      email 'dammietestman@example.com'
+      birthday 19770101
+      gender :female
+    end
   end
 end

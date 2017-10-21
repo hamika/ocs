@@ -5,10 +5,8 @@ class Schedule < ApplicationRecord
   accepts_nested_attributes_for :customers,
                                 allow_destroy: true
 
-  if @schedule.present?
-    validates :target, numericality: { only_integer: true }
-    validates :achievement, numericality: true
-  end
+  validates :target, numericality: { only_integer: true }, on: :update
+  validates :achievement, numericality: true, on: :update
   validates :body, presence: true, length: { maximum: 512 }
 
   def self.term_between(term_from, term_to)

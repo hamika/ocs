@@ -25,14 +25,17 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'rails-controller-testing'
-  gem "faker"
+  gem 'faker'
+  gem 'shoulda-matchers'
+  gem 'guard-rspec'
+  gem 'spring-commands-rspec'
 end
 
 group :test do
-  gem "capybara", "~> 2.4.3"
-  gem "database_cleaner", "~> 1.3.0"
-  gem "launchy", "~> 2.4.2"
-  gem "selenium-webdriver", "~> 2.43.0"
+  gem 'capybara'
+  gem 'database_cleaner'
+  gem 'launchy'
+  gem 'selenium-webdriver'
 end
 
 group :development do
@@ -40,10 +43,10 @@ group :development do
   gem 'pry-rails'
   gem 'pry-byebug'
   gem 'pry-nav'
-  gem 'web-console', '>= 3.3.0'
-  gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'web-console'
+  gem 'listen'
   gem 'spring'
-  gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'spring-watcher-listen'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
